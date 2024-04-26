@@ -14,7 +14,9 @@ const AllToy = () => {
   }, []);
   return (
     <div>
-      <h2>here are all data : {allToy.length}</h2>
+      <h2 className=" text-4xl font-bold text-red-700 text-center mt-5">
+        Our Products !!!
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mx-8 mt-20">
         {allToy.map((item) => (
           <Toy key={item.id} item={item}></Toy>
