@@ -5,6 +5,9 @@ import App from "./App.jsx";
 import AllToy from "./component/AllToyShop/AllToy.jsx";
 import Categories from "./component/Categorys/Categories.jsx";
 import "./index.css";
+import Login from "./page/Login.jsx";
+import Register from "./page/Register.jsx";
+import AuthProvider from "./Provider/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,11 +26,20 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "register",
+    element: <Register />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    {/* <App /> */}
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <AuthProvider>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </AuthProvider>
 );
