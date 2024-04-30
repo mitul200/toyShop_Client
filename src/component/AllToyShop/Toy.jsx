@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Toy = ({ item, handelViewDetails }) => {
   console.log(item);
@@ -15,21 +14,21 @@ const Toy = ({ item, handelViewDetails }) => {
         <div className="card-body">
           <h2 className="card-title">
             {item.name}
-            <div className="badge badge-secondary">NEW</div>
+            <div className="badge badge-secondary"></div>
           </h2>
 
           <div className="card-actions ">
             <p> price : {item.price}</p>
             <p> Rating : {item.rating}</p>
           </div>
-          <Link to={`/toyDetails/${item._id}`}>
-            <button
-              onClick={() => handelViewDetails(item._id)}
-              className="btn btn-secondary"
-            >
-              View details
-            </button>
-          </Link>
+          {/* <Link to={`/toyDetails/${item._id}`}> */}
+          <button
+            onClick={() => handelViewDetails(item._id)}
+            className="btn btn-secondary"
+          >
+            View details
+          </button>
+          {/* </Link> */}
         </div>
       </div>
     </div>

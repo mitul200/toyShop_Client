@@ -7,6 +7,7 @@ import Categories from "./component/Categorys/Categories.jsx";
 import Layout from "./component/Layout/Layout.jsx";
 import ToyDetails from "./component/ToyDetails/ToyDetails.jsx";
 import "./index.css";
+import AddItems from "./page/AddItems.jsx";
 import Login from "./page/Login.jsx";
 import Register from "./page/Register.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "addItems",
+        element: <AddItems />,
       },
     ],
   },
