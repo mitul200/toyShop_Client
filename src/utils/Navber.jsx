@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 import logo from "../assets/4495807.jpg";
 
 const Navber = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user?.email);
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -62,6 +65,15 @@ const Navber = () => {
             </li>
             <li>
               <Link to="/register">Register</Link>
+            </li>
+            <li>
+              {user && user.email ? (
+                <>
+                  <p className="text-blue-700">Welcome : {user.email}</p>
+                </>
+              ) : (
+                <></>
+              )}
             </li>
           </ul>
         </div>

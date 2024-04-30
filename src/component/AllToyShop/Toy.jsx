@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Toy = ({ item }) => {
+const Toy = ({ item, handelViewDetails }) => {
   console.log(item);
   return (
     <div>
@@ -13,14 +14,22 @@ const Toy = ({ item }) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">
-            Shoes!
+            {item.name}
             <div className="badge badge-secondary">NEW</div>
           </h2>
-          <p>{item.name}</p>
-          <div className="card-actions justify-end">
-            <div className="badge badge-outline">Fashion</div>
-            <div className="badge badge-outline">Products</div>
+
+          <div className="card-actions ">
+            <p> price : {item.price}</p>
+            <p> Rating : {item.rating}</p>
           </div>
+          <Link to={`/toyDetails/${item._id}`}>
+            <button
+              onClick={() => handelViewDetails(item._id)}
+              className="btn btn-secondary"
+            >
+              View details
+            </button>
+          </Link>
         </div>
       </div>
     </div>

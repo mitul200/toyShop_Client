@@ -1,27 +1,39 @@
+import React, { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 import login from "../assets/login.jpg";
-import Navber from "../utils/Navber";
 
 const Login = () => {
-  const handelLogin = () => {
-    console.log(object);
+  const { singIn } = useContext(AuthContext);
+  const handelLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    singIn(email, password)
+      .then((result) => {
+        const User = result.user;
+        console.log(User);
+      })
+      .catch((error) => console.error(error));
   };
   return (
     <>
-      <Navber />
       <div>
         <div className=" flex p-8">
           <div className="">
             <img className="w-[800px]" src={login} alt="" />
           </div>
 
-          <form className="card-body w-1/2">
-            <h1 className="text-center text-red-700 text-4xl">Regiser now!!</h1>
+          <form onSubmit={handelLogin} className="card-body w-1/2">
+            <h1 className="text-center text-red-700 text-4xl">Login now!!</h1>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -33,6 +45,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 placeholder="password"
                 className="input input-bordered"
                 required

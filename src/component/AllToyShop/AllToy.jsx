@@ -4,8 +4,12 @@ import Toy from "./Toy";
 const AllToy = () => {
   const [allToy, setAllToy] = useState([]);
 
+  const handelViewDetails = (id) => {
+    console.log(id);
+  };
+
   useEffect(() => {
-    fetch(`http://localhost:5000/allToy`)
+    fetch(`http://localhost:5000/all-products`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -19,7 +23,11 @@ const AllToy = () => {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mx-8 mt-20">
         {allToy.map((item) => (
-          <Toy key={item.id} item={item}></Toy>
+          <Toy
+            key={item.id}
+            handelViewDetails={handelViewDetails}
+            item={item}
+          ></Toy>
         ))}
       </div>
     </div>

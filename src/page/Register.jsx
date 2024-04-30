@@ -1,40 +1,56 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import register from "../assets/register.jpg";
-import Navber from "../utils/Navber";
 
 const Register = () => {
   const { creatUser } = useContext(AuthContext);
-  const handelLogin = (event) => {
+
+  const handelRegister = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(email, password);
     creatUser(email, password)
       .then((result) => {
-        const user = result.user;
+        const loggedUser = result.user;
+        console.log(loggedUser);
       })
-      .then((error) => {
-        console.log(error);
-      });
+      .catch((error) => console.error(error));
   };
+
+  // const handelLogin = (event) => {
+  //   event.preventDefault();
+  //   const form = event.target;
+  //   const email = form.email.value;
+  //   const password = form.password.value;
+  //   creatUser(email, password)
+  //     .then((result) => {
+  //       const user = result.user;
+  //     })
+  //     .then((error) => {
+  //       console.log(error);
+  //     });
+  // };
   return (
     <>
-      <Navber />
       <div>
         <div className=" flex p-8">
           <div className="">
             <img className="w-[800px]" src={register} alt="" />
           </div>
 
-          <form className="card-body w-1/2">
-            <h1 className="text-center text-red-700 text-4xl">Login now!!</h1>
+          <form onSubmit={handelRegister} className="card-body w-1/2">
+            <h1 className="text-center text-red-700 text-4xl">
+              Register now!!
+            </h1>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -46,6 +62,7 @@ const Register = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 placeholder="password"
                 className="input input-bordered"
                 required
@@ -57,7 +74,7 @@ const Register = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-primary">Register</button>
             </div>
           </form>
         </div>
