@@ -47,6 +47,7 @@ const AddItems = () => {
           <input
             className="border border-black p-3 w-1/3 m-4"
             placeholder="please Enter your email"
+            defaultValue={user?.email}
             {...register("email")}
           />
           <input
