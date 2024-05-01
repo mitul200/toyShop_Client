@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 const ToyDetails = () => {
   const alldetails = useLoaderData();
-  console.log(data);
+  console.log(alldetails);
   return (
     <div className="card card-side bg-base-100 shadow-xl">
       <figure>

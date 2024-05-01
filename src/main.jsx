@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import AllToy from "./component/AllToyShop/AllToy.jsx";
 import Categories from "./component/Categorys/Categories.jsx";
 import Layout from "./component/Layout/Layout.jsx";
+import MyProducts from "./component/MyProducts/MyProducts.jsx";
 import ToyDetails from "./component/ToyDetails/ToyDetails.jsx";
 import "./index.css";
 import AddItems from "./page/AddItems.jsx";
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "addItems",
         element: <AddItems />,
+      },
+      {
+        path: "myProducts",
+        element: <MyProducts />,
       },
     ],
   },

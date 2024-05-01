@@ -84,6 +84,15 @@ const Navber = () => {
                 <></>
               )}
             </li>
+            <li>
+              {user && user.email ? (
+                <>
+                  <Link to="/myProducts">My Products</Link>
+                </>
+              ) : (
+                <></>
+              )}
+            </li>
           </ul>
         </div>
         <div className="navbar-end">
