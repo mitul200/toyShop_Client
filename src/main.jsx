@@ -16,6 +16,7 @@ import EditData from "./component/EditData/EditData.jsx";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PrivetRouts from "./component/PrivetRouts/PrivetRouts.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: ":id",
-        element: <ToyDetails />,
+        element: (
+          <PrivetRouts>
+            <ToyDetails />
+          </PrivetRouts>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.id}`),
       },
