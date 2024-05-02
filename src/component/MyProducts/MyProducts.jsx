@@ -36,7 +36,7 @@ const MyProducts = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.deletedCount > 0) {
-          alert("delet successful");
+          alert("delete successful");
           const remining = items.filter((item) => {
             return item._id !== id;
           });

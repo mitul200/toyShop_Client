@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useLoaderData, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 // import { Link } from "react-router-dom";
 // import { AuthContext } from "../Provider/AuthProvider";
 
@@ -25,8 +26,11 @@ const EditData = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
-    console.log(data);
+      .then((result) => {
+        toast.success("added successfully");
+        console.log(result);
+      });
+    // console.log(data);
   };
 
   return (
