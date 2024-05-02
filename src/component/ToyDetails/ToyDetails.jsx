@@ -28,6 +28,7 @@ const ToyDetails = () => {
             {" "}
             Category : <span className="text-indigo-700">{subcategory}</span>
           </p>
+          <p className="mt-3"> Price : {price}</p>
           <p className="mt-3"> Rating : {rating}</p>
           <p className="mt-3"> Quentity: {availableQuantity}</p>
           <p className="mt-3"> Description : {detailDescription}</p>

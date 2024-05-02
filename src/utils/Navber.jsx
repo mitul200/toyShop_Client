@@ -4,7 +4,13 @@ import { AuthContext } from "../Provider/AuthProvider";
 import logo from "../assets/4495807.jpg";
 
 const Navber = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handelLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => console.error(err));
+  };
   console.log(user?.email);
   return (
     <div>
@@ -61,9 +67,6 @@ const Navber = () => {
               <Link to="/">Blog</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
               <Link to="/register">Register</Link>
             </li>
             <li>
@@ -73,6 +76,13 @@ const Navber = () => {
                 </>
               ) : (
                 <></>
+              )}
+            </li>
+            <li>
+              {user && user.email ? (
+                <button onClick={handelLogOut}>LogOut</button>
+              ) : (
+                <Link to="/login">Login</Link>
               )}
             </li>
             <li>
