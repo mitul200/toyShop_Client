@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 // import { Link } from "react-router-dom";
 // import { AuthContext } from "../Provider/AuthProvider";
 
 const EditData = () => {
+  const data = useLoaderData();
+  console.log(data);
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   console.log(user?.email);
@@ -38,39 +40,47 @@ const EditData = () => {
           <input
             className="border border-black p-3 w-1/3 m-4"
             placeholder="ToyName"
+            defaultValue={data.name}
             {...register("name")}
           />
           <input
             className="border border-black p-3  m-4"
             placeholder="price"
+            defaultValue={data.price}
             {...register("price")}
           />
           <br />
           <input
             className="border border-black p-3 w-1/3 m-4"
             placeholder="please Enter your email"
-            defaultValue={user?.email}
+            defaultValue={data?.email}
             {...register("email")}
           />
           <input
             className="border border-black p-3 w-1/3 m-4"
-            defaultValue="Deseription"
+            defaultValue={data.detailDescription}
             {...register("detailDescription")}
           />
           <br />
           <input
             className="border border-black p-3 w-1/3 m-4"
             name="rating"
+            defaultValue={data.rating}
             placeholder="rating"
             {...register("rating")}
           />
           <input
             className="border border-black p-3 w-1/3 m-4"
             name="availableQuantity"
+            defaultValue={data.availableQuantity}
             placeholder="Available Quentity"
             {...register("availableQuantity")}
           />
-          <select {...register("subcategory")} className="p-3">
+          <select
+            defaultValue={data.subcategory}
+            {...register("subcategory")}
+            className="p-3"
+          >
             <option value="cartoy">CarToy</option>
             <option value="shiptoy">ShipToy</option>
             <option value="planetoy">PlaneToy</option>
@@ -78,6 +88,7 @@ const EditData = () => {
           <input
             className="border border-black p-3 w-3/4 m-4"
             name="pictureURL"
+            defaultValue={data.pictureURL}
             placeholder="https://example.com/products.jpg"
             {...register("pictureURL")}
           />

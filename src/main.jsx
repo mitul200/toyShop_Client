@@ -69,6 +69,8 @@ const router = createBrowserRouter([
       {
         path: "editFile/:id",
         element: <EditData />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
     ],
   },

@@ -7,16 +7,18 @@ const MyProducts = () => {
   const { user } = useContext(AuthContext);
   const [items, setItems] = useState([]);
   const [searchText, setSearchText] = useState("");
-  // console.log(user?.email);
+
   useEffect(() => {
     fetch(`http://localhost:5000/myProducts/${user?.email}`)
       .then((res) => res.json())
       .then((datas) => {
         setItems(datas);
       });
-  }, [user, items]);
-  // console.log(items);
+  }, [user]);
 
+  const handelEdit = (id) => {
+    console.log(id);
+  };
   // searchitems
   const handelSearch = () => {
     fetch(`http://localhost:5000/searchName/${searchText}`)
@@ -26,7 +28,6 @@ const MyProducts = () => {
         console.log("tttttttttttttttttttttttttt", data);
       });
   };
-  // console.log(data);
 
   const handelDelete = (id) => {
     fetch(`http://localhost:5000/produts/${id}`, {
@@ -37,7 +38,7 @@ const MyProducts = () => {
         if (result.deletedCount > 0) {
           alert("delet successful");
           const remining = items.filter((item) => {
-            item._id !== id;
+            return item._id !== id;
           });
           setItems(remining);
         }
@@ -45,7 +46,7 @@ const MyProducts = () => {
   };
 
   return (
-    <div className="mx-32 h-screen">
+    <div className="mx-32 h-screen mb-[400px]">
       {/* <UpdateModal /> */}
       <h1 className="text-5xl text-center text-fuchsia-800 my-5">
         Posted items
@@ -67,7 +68,7 @@ const MyProducts = () => {
           {/* head */}
           <thead>
             <tr>
-              <th></th>
+              <th>#</th>
               <th>Products Name</th>
               <th>Available Quantity</th>
               <th>email</th>
@@ -79,16 +80,21 @@ const MyProducts = () => {
           <tbody>
             {/* row 1 */}
             {items?.map((item, index) => (
-              <tr>
+              <tr key={item._id}>
                 <th>{index + 1}</th>
                 <td>{item.name}</td>
-                <td>{item.subcategory}</td>
+                {/* <td>{item.subcategory}</td> */}
                 <td>{item.availableQuantity}</td>
                 <td>{item.email}</td>
                 <td>{item.price}</td>
                 <td>
                   <Link to={`/editFile/${item._id}`}>
-                    <button className="btn btn-ghost">✒️</button>
+                    <button
+                      onClick={() => handelEdit(item._id)}
+                      className="btn btn-ghost"
+                    >
+                      ✒️
+                    </button>
                   </Link>
                 </td>
                 <td>
