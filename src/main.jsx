@@ -12,6 +12,10 @@ import AddItems from "./page/AddItems.jsx";
 import Login from "./page/Login.jsx";
 import Register from "./page/Register.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
+import EditData from "./component/EditData/EditData.jsx";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +66,10 @@ const router = createBrowserRouter([
         path: "myProducts",
         element: <MyProducts />,
       },
+      {
+        path: "editFile/:id",
+        element: <EditData />,
+      },
     ],
   },
 ]);
@@ -70,6 +78,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
     <React.StrictMode>
       <RouterProvider router={router} />
+      <ToastContainer />
     </React.StrictMode>
   </AuthProvider>
 );

@@ -1,20 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Link } from "react-router-dom";
 // import UpdateModal from "../../utils/UpdateModal";
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
   const [items, setItems] = useState([]);
   const [searchText, setSearchText] = useState("");
-  console.log(user?.email);
+  // console.log(user?.email);
   useEffect(() => {
     fetch(`http://localhost:5000/myProducts/${user?.email}`)
       .then((res) => res.json())
       .then((datas) => {
         setItems(datas);
       });
-  }, [user]);
-  console.log(items);
+  }, [user, items]);
+  // console.log(items);
 
   // searchitems
   const handelSearch = () => {
@@ -28,11 +29,19 @@ const MyProducts = () => {
   // console.log(data);
 
   const handelDelete = (id) => {
-    fetch(`http://localhost:5000/produts/${id}`,{
-      method:"DELETE"
+    fetch(`http://localhost:5000/produts/${id}`, {
+      method: "DELETE",
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
+      .then((result) => {
+        if (result.deletedCount > 0) {
+          alert("delet successful");
+          const remining = items.filter((item) => {
+            item._id !== id;
+          });
+          setItems(remining);
+        }
+      });
   };
 
   return (
@@ -78,7 +87,9 @@ const MyProducts = () => {
                 <td>{item.email}</td>
                 <td>{item.price}</td>
                 <td>
-                  <button className="btn btn-ghost">✒️</button>
+                  <Link to={`/editFile/${item._id}`}>
+                    <button className="btn btn-ghost">✒️</button>
+                  </Link>
                 </td>
                 <td>
                   <button

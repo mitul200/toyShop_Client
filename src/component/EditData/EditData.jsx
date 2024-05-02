@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useParams } from "react-router-dom";
 // import { Link } from "react-router-dom";
-import { AuthContext } from "../Provider/AuthProvider";
-import { toast } from "react-toastify";
+// import { AuthContext } from "../Provider/AuthProvider";
 
-const AddItems = () => {
+const EditData = () => {
+  const { id } = useParams();
   const { user } = useContext(AuthContext);
-  // console.log(user?.email);
+  console.log(user?.email);
   const {
     register,
     handleSubmit,
@@ -15,23 +17,21 @@ const AddItems = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/postProducts`, {
-      method: "POST",
+    fetch(`http://localhost:5000/product/${id}`, {
+      method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        toast.success("added successfully");
-      });
+      .then((result) => console.log(result));
+    console.log(data);
   };
 
   return (
     <div className=" h-screen w-screen mt-20 flex justify-around">
       <div className="w-1/2">
-        <h1 className="text-center font-semibold text-indigo-700">
-          Add your products
+        <h1 className="text-center font-semibold text-indigo-700 text-7xl">
+          Edit your products
         </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* register your input into the hook by invoking the "register" function */}
@@ -96,4 +96,4 @@ const AddItems = () => {
   );
 };
 
-export default AddItems;
+export default EditData;
