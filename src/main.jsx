@@ -17,11 +17,13 @@ import EditData from "./component/EditData/EditData.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivetRouts from "./component/PrivetRouts/PrivetRouts.jsx";
+import ErrorPage from "./page/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -38,6 +40,7 @@ const router = createBrowserRouter([
   {
     path: "/toyDetails",
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: ":id",
@@ -54,6 +57,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "login",
