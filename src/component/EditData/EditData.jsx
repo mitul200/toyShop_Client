@@ -37,7 +37,7 @@ const EditData = () => {
     <div className=" h-screen w-screen mt-20 flex justify-around">
       <div className="w-1/2">
         <h1 className="text-center font-semibold text-indigo-700 text-7xl">
-          Edit your products
+          Edit your productss
         </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* register your input into the hook by invoking the "register" function */}
