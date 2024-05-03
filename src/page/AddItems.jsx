@@ -15,7 +15,7 @@ const AddItems = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/postProducts`, {
+    fetch(`https://toy-shop-server-sable.vercel.app/postProducts`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

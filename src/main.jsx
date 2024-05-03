@@ -50,7 +50,9 @@ const router = createBrowserRouter([
           </PrivetRouts>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://toy-shop-server-sable.vercel.app/products/${params.id}`
+          ),
       },
     ],
   },
@@ -79,7 +81,9 @@ const router = createBrowserRouter([
         path: "editFile/:id",
         element: <EditData />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://toy-shop-server-sable.vercel.app/products/${params.id}`
+          ),
       },
     ],
   },

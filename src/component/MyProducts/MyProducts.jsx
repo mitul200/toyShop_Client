@@ -9,7 +9,7 @@ const MyProducts = () => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myProducts/${user?.email}`)
+    fetch(`https://toy-shop-server-sable.vercel.app/myProducts/${user?.email}`)
       .then((res) => res.json())
       .then((datas) => {
         setItems(datas);
@@ -21,7 +21,7 @@ const MyProducts = () => {
   };
   // searchitems
   const handelSearch = () => {
-    fetch(`http://localhost:5000/searchName/${searchText}`)
+    fetch(`https://toy-shop-server-sable.vercel.app/searchName/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         setItems(data);
@@ -30,7 +30,7 @@ const MyProducts = () => {
   };
 
   const handelDelete = (id) => {
-    fetch(`http://localhost:5000/produts/${id}`, {
+    fetch(`https://toy-shop-server-sable.vercel.app/produts/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

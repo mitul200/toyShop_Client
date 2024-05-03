@@ -20,7 +20,7 @@ const EditData = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://toy-shop-server-sable.vercel.app/product/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

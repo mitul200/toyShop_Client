@@ -6,7 +6,7 @@ const Categories = () => {
   const [categoris, setCategoris] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/categoris`)
+    fetch(`https://toy-shop-server-sable.vercel.app/categoris`)
       .then((res) => res.json())
       .then((data) => {
         setCategoris(data);
