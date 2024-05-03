@@ -28,7 +28,7 @@ const AddItems = () => {
   };
 
   return (
-    <div className=" h-screen w-screen mt-20 flex justify-around">
+    <div className=" h-screen w-screen mt-20 flex justify-center">
       <div className="w-1/2">
         <h1 className="text-center font-semibold text-indigo-700">
           Add your products
@@ -90,7 +90,9 @@ const AddItems = () => {
         </form>
       </div>
       <div>
-        <h1>hellow </h1>
+        <h1 className="mt-10 text-4xl font-bold text-blue-800 uppercase">
+          add your prducts{" "}
+        </h1>
       </div>
     </div>
   );
